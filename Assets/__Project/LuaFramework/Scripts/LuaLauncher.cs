@@ -4,39 +4,29 @@ using UnityEditor;
 using UnityEngine;
 using XLua;
 
-public class LuaLauncher : MonoBehaviour
+public class LuaLauncher : Singleton<LuaLauncher>
 {
-    public static LuaLauncher Instance;
     private const string REQUIRE_ROOT_DIR = "Assets/__Project/LuaFramework/Lua/";
 
-    LuaEnv _env = new LuaEnv();
+    private LuaEnv _env = new LuaEnv();
 
-    private void Awake()
+    public void Init()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-
-        DontDestroyOnLoad(gameObject);
-    }
-
-    private void Start()
-    {
-        _env.AddLoader((ref string filename) =>
-        {
-            string path = REQUIRE_ROOT_DIR + filename + ".lua";
-            StreamReader sr = new StreamReader(path);
-
-
-            return System.Text.Encoding.UTF8.GetBytes(sr.ReadToEnd());
-        });
+        _env.AddLoader(Loader);
 
         _env.DoString("require 'requires'");
         CallMainFunc();
     }
+    
+    private byte[] Loader(ref string fileName)
+    {
+        string path = REQUIRE_ROOT_DIR + fileName + ".lua";
+        StreamReader sr = new StreamReader(path);
 
-    private void OnDestroy()
+        return System.Text.Encoding.UTF8.GetBytes(sr.ReadToEnd());
+    }
+
+    ~LuaLauncher()
     {
         _env.Dispose();
     }
@@ -76,6 +66,8 @@ public class LuaLauncher : MonoBehaviour
             return func?.Call(args);
         }
     }
+
+
     public object[] CallGlobalFunc(string funcName, params object[] args)
     {
         return CallStaticFunc("", funcName, args);
