@@ -1,3 +1,3 @@
 ﻿function main()
-    print("aaaaaa")
+    print("很新！卡面来打！！")
 end

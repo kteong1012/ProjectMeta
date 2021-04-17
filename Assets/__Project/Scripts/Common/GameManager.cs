@@ -6,6 +6,6 @@ public class GameManager : MonoBehaviour
 {
     void Start()
     {
-        LuaLauncher.Instance.Init();
+        LuaManager.Instance.Init();
     }
 }

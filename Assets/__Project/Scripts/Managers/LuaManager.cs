@@ -1,32 +1,40 @@
 using System;
 using System.IO;
+using System.Text;
 using UnityEditor;
 using UnityEngine;
 using XLua;
 
-public class LuaLauncher : Singleton<LuaLauncher>
+public class LuaManager : Singleton<LuaManager>
 {
     private const string REQUIRE_ROOT_DIR = "Assets/__Project/LuaFramework/Lua/";
 
     private LuaEnv _env = new LuaEnv();
+    private bool _isInited = false;
 
     public void Init()
     {
-        _env.AddLoader(Loader);
+        if (_isInited)
+        {
+            return;
+        }
 
+        //添加自定义loader
+        _env.AddLoader(Loader);
+        //requires作为第一个脚本，在里面要写所有的lua脚本
         _env.DoString("require 'requires'");
+        //调用一下lua的main方法
         CallMainFunc();
     }
     
     private byte[] Loader(ref string fileName)
     {
         string path = REQUIRE_ROOT_DIR + fileName + ".lua";
-        StreamReader sr = new StreamReader(path);
-
-        return System.Text.Encoding.UTF8.GetBytes(sr.ReadToEnd());
+        StreamReader sr = new StreamReader(path,Encoding.UTF8);
+        return sr.CurrentEncoding.GetBytes(sr.ReadToEnd());
     }
 
-    ~LuaLauncher()
+    ~LuaManager()
     {
         _env.Dispose();
     }
@@ -45,7 +53,7 @@ public class LuaLauncher : Singleton<LuaLauncher>
     {
         if (string.IsNullOrEmpty(funcName))
         {
-            Debug.LogError($"function名为空");
+            Debug.LogError("function名为空");
             return null;
         }
         if (string.IsNullOrEmpty(tableName))

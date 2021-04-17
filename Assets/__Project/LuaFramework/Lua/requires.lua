@@ -1,3 +1,3 @@
-﻿require ("main")
-require ("FairyGUI")
-require ("Common/TestLua")
+﻿require "main"
+require "FairyGUI"
+require "Common/TestLua"

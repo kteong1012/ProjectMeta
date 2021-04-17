@@ -1,7 +1,7 @@
 ﻿TestA = {}
 
 function TestA.PrintA()
-    print("TestA is called")
+    print("中文测试通过")
 end
 
 
