@@ -5,6 +5,8 @@ using UnityEditor;
 using UnityEngine;
 using XLua;
 
+[LuaCallCSharp]
+
 public class LuaManager : Singleton<LuaManager>
 {
     private const string REQUIRE_ROOT_DIR = "Assets/__Project/LuaFramework/Lua/";
@@ -41,14 +43,16 @@ public class LuaManager : Singleton<LuaManager>
 
     private void CallMainFunc()
     {
-        if (_env == null)
-        {
-            return;
-        }
-        LuaFunction mainFunc = _env.Global.Get<LuaFunction>("main");
-        mainFunc?.Call();
+        CallGlobalFunc("Main");
     }
 
+    /// <summary>
+    /// 调用Lua的静态方法
+    /// </summary>
+    /// <param name="tableName">表名，如果不填就默认是全局_G</param>
+    /// <param name="funcName">方法名</param>
+    /// <param name="args">参数列表</param>
+    /// <returns>返回值</returns>
     public object[] CallStaticFunc(string tableName, string funcName, params object[] args)
     {
         if (string.IsNullOrEmpty(funcName))
@@ -59,7 +63,9 @@ public class LuaManager : Singleton<LuaManager>
         if (string.IsNullOrEmpty(tableName))
         {
             LuaFunction func = _env.Global.Get<LuaFunction>(funcName);
-            return func?.Call(args);
+            object[] ret = func?.Call(args);
+            func?.Dispose();
+            return ret;
         }
         else
         {
@@ -70,8 +76,10 @@ public class LuaManager : Singleton<LuaManager>
                 return null;
             }
             LuaFunction func = table.Get<LuaFunction>(funcName);
-            table.Dispose();
-            return func?.Call(args);
+            object[] ret = func?.Call(args);
+            table?.Dispose();
+            func?.Dispose();
+            return ret;
         }
     }
 

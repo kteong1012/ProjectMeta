@@ -37,6 +37,8 @@ namespace XLua
 				translator.RegisterPushAndGetAndUpdate<XLuaTest.Pedding>(translator.PushXLuaTestPedding, translator.Get, translator.UpdateXLuaTestPedding);
 				translator.RegisterPushAndGetAndUpdate<XLuaTest.MyStruct>(translator.PushXLuaTestMyStruct, translator.Get, translator.UpdateXLuaTestMyStruct);
 				translator.RegisterPushAndGetAndUpdate<XLuaTest.PushAsTableStruct>(translator.PushXLuaTestPushAsTableStruct, translator.Get, translator.UpdateXLuaTestPushAsTableStruct);
+				translator.RegisterPushAndGetAndUpdate<FairyGUI.RelationType>(translator.PushFairyGUIRelationType, translator.Get, translator.UpdateFairyGUIRelationType);
+				translator.RegisterPushAndGetAndUpdate<FairyGUI.EaseType>(translator.PushFairyGUIEaseType, translator.Get, translator.UpdateFairyGUIEaseType);
 				translator.RegisterPushAndGetAndUpdate<Tutorial.TestEnum>(translator.PushTutorialTestEnum, translator.Get, translator.UpdateTutorialTestEnum);
 				translator.RegisterPushAndGetAndUpdate<XLuaTest.MyEnum>(translator.PushXLuaTestMyEnum, translator.Get, translator.UpdateXLuaTestMyEnum);
 				translator.RegisterPushAndGetAndUpdate<Tutorial.DerivedClass.TestEnumInner>(translator.PushTutorialDerivedClassTestEnumInner, translator.Get, translator.UpdateTutorialDerivedClassTestEnumInner);
@@ -771,6 +773,174 @@ namespace XLua
             }
         }
         
+        int FairyGUIRelationType_TypeID = -1;
+		int FairyGUIRelationType_EnumRef = -1;
+        
+        public void PushFairyGUIRelationType(RealStatePtr L, FairyGUI.RelationType val)
+        {
+            if (FairyGUIRelationType_TypeID == -1)
+            {
+			    bool is_first;
+                FairyGUIRelationType_TypeID = getTypeId(L, typeof(FairyGUI.RelationType), out is_first);
+				
+				if (FairyGUIRelationType_EnumRef == -1)
+				{
+				    Utils.LoadCSTable(L, typeof(FairyGUI.RelationType));
+				    FairyGUIRelationType_EnumRef = LuaAPI.luaL_ref(L, LuaIndexes.LUA_REGISTRYINDEX);
+				}
+				
+            }
+			
+			if (LuaAPI.xlua_tryget_cachedud(L, (int)val, FairyGUIRelationType_EnumRef) == 1)
+            {
+			    return;
+			}
+			
+            IntPtr buff = LuaAPI.xlua_pushstruct(L, 4, FairyGUIRelationType_TypeID);
+            if (!CopyByValue.Pack(buff, 0, (int)val))
+            {
+                throw new Exception("pack fail fail for FairyGUI.RelationType ,value="+val);
+            }
+			
+			LuaAPI.lua_getref(L, FairyGUIRelationType_EnumRef);
+			LuaAPI.lua_pushvalue(L, -2);
+			LuaAPI.xlua_rawseti(L, -2, (int)val);
+			LuaAPI.lua_pop(L, 1);
+			
+        }
+		
+        public void Get(RealStatePtr L, int index, out FairyGUI.RelationType val)
+        {
+		    LuaTypes type = LuaAPI.lua_type(L, index);
+            if (type == LuaTypes.LUA_TUSERDATA )
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != FairyGUIRelationType_TypeID)
+				{
+				    throw new Exception("invalid userdata for FairyGUI.RelationType");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+				int e;
+                if (!CopyByValue.UnPack(buff, 0, out e))
+                {
+                    throw new Exception("unpack fail for FairyGUI.RelationType");
+                }
+				val = (FairyGUI.RelationType)e;
+                
+            }
+            else
+            {
+                val = (FairyGUI.RelationType)objectCasters.GetCaster(typeof(FairyGUI.RelationType))(L, index, null);
+            }
+        }
+		
+        public void UpdateFairyGUIRelationType(RealStatePtr L, int index, FairyGUI.RelationType val)
+        {
+		    
+            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != FairyGUIRelationType_TypeID)
+				{
+				    throw new Exception("invalid userdata for FairyGUI.RelationType");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+                if (!CopyByValue.Pack(buff, 0,  (int)val))
+                {
+                    throw new Exception("pack fail for FairyGUI.RelationType ,value="+val);
+                }
+            }
+			
+            else
+            {
+                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
+            }
+        }
+        
+        int FairyGUIEaseType_TypeID = -1;
+		int FairyGUIEaseType_EnumRef = -1;
+        
+        public void PushFairyGUIEaseType(RealStatePtr L, FairyGUI.EaseType val)
+        {
+            if (FairyGUIEaseType_TypeID == -1)
+            {
+			    bool is_first;
+                FairyGUIEaseType_TypeID = getTypeId(L, typeof(FairyGUI.EaseType), out is_first);
+				
+				if (FairyGUIEaseType_EnumRef == -1)
+				{
+				    Utils.LoadCSTable(L, typeof(FairyGUI.EaseType));
+				    FairyGUIEaseType_EnumRef = LuaAPI.luaL_ref(L, LuaIndexes.LUA_REGISTRYINDEX);
+				}
+				
+            }
+			
+			if (LuaAPI.xlua_tryget_cachedud(L, (int)val, FairyGUIEaseType_EnumRef) == 1)
+            {
+			    return;
+			}
+			
+            IntPtr buff = LuaAPI.xlua_pushstruct(L, 4, FairyGUIEaseType_TypeID);
+            if (!CopyByValue.Pack(buff, 0, (int)val))
+            {
+                throw new Exception("pack fail fail for FairyGUI.EaseType ,value="+val);
+            }
+			
+			LuaAPI.lua_getref(L, FairyGUIEaseType_EnumRef);
+			LuaAPI.lua_pushvalue(L, -2);
+			LuaAPI.xlua_rawseti(L, -2, (int)val);
+			LuaAPI.lua_pop(L, 1);
+			
+        }
+		
+        public void Get(RealStatePtr L, int index, out FairyGUI.EaseType val)
+        {
+		    LuaTypes type = LuaAPI.lua_type(L, index);
+            if (type == LuaTypes.LUA_TUSERDATA )
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != FairyGUIEaseType_TypeID)
+				{
+				    throw new Exception("invalid userdata for FairyGUI.EaseType");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+				int e;
+                if (!CopyByValue.UnPack(buff, 0, out e))
+                {
+                    throw new Exception("unpack fail for FairyGUI.EaseType");
+                }
+				val = (FairyGUI.EaseType)e;
+                
+            }
+            else
+            {
+                val = (FairyGUI.EaseType)objectCasters.GetCaster(typeof(FairyGUI.EaseType))(L, index, null);
+            }
+        }
+		
+        public void UpdateFairyGUIEaseType(RealStatePtr L, int index, FairyGUI.EaseType val)
+        {
+		    
+            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != FairyGUIEaseType_TypeID)
+				{
+				    throw new Exception("invalid userdata for FairyGUI.EaseType");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+                if (!CopyByValue.Pack(buff, 0,  (int)val))
+                {
+                    throw new Exception("pack fail for FairyGUI.EaseType ,value="+val);
+                }
+            }
+			
+            else
+            {
+                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
+            }
+        }
+        
         int TutorialTestEnum_TypeID = -1;
 		int TutorialTestEnum_EnumRef = -1;
         
@@ -1100,6 +1270,18 @@ namespace XLua
 				translator.PushXLuaTestPushAsTableStruct(L, array[index]);
 				return true;
 			}
+			else if (type == typeof(FairyGUI.RelationType[]))
+			{
+			    FairyGUI.RelationType[] array = obj as FairyGUI.RelationType[];
+				translator.PushFairyGUIRelationType(L, array[index]);
+				return true;
+			}
+			else if (type == typeof(FairyGUI.EaseType[]))
+			{
+			    FairyGUI.EaseType[] array = obj as FairyGUI.EaseType[];
+				translator.PushFairyGUIEaseType(L, array[index]);
+				return true;
+			}
 			else if (type == typeof(Tutorial.TestEnum[]))
 			{
 			    Tutorial.TestEnum[] array = obj as Tutorial.TestEnum[];
@@ -1187,6 +1369,18 @@ namespace XLua
 			else if (type == typeof(XLuaTest.PushAsTableStruct[]))
 			{
 			    XLuaTest.PushAsTableStruct[] array = obj as XLuaTest.PushAsTableStruct[];
+				translator.Get(L, obj_idx, out array[array_idx]);
+				return true;
+			}
+			else if (type == typeof(FairyGUI.RelationType[]))
+			{
+			    FairyGUI.RelationType[] array = obj as FairyGUI.RelationType[];
+				translator.Get(L, obj_idx, out array[array_idx]);
+				return true;
+			}
+			else if (type == typeof(FairyGUI.EaseType[]))
+			{
+			    FairyGUI.EaseType[] array = obj as FairyGUI.EaseType[];
 				translator.Get(L, obj_idx, out array[array_idx]);
 				return true;
 			}

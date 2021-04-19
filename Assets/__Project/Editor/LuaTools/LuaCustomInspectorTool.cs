@@ -17,7 +17,7 @@ public class LuaCustomInspectorTool : Editor
             GUI.backgroundColor = Color.white;
             path = path.Substring(BASE_PATH.Length);
             path = path.Substring(0, path.Length - SUFFIX.Length);
-            string completeText = $"require (\"{path}\")";
+            string completeText = $"require \"{path}\"";
             GUILayout.TextArea(completeText);
             if (GUILayout.Button("复制", GUILayout.Width(100), GUILayout.Height(50)))
             {

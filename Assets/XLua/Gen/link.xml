@@ -48,7 +48,51 @@
 	</assembly>
 
 	<assembly fullname="Assembly-CSharp">
-	    <type fullname="Tutorial.BaseClass" preserve="all"/>
+	    <type fullname="LuaManager" preserve="all"/>
+		<type fullname="PanelManager" preserve="all"/>
+		<type fullname="ResourceManager" preserve="all"/>
+		<type fullname="UIPackageManager" preserve="all"/>
+		<type fullname="FairyGUI.EventContext" preserve="all"/>
+		<type fullname="FairyGUI.EventDispatcher" preserve="all"/>
+		<type fullname="FairyGUI.EventListener" preserve="all"/>
+		<type fullname="FairyGUI.InputEvent" preserve="all"/>
+		<type fullname="FairyGUI.DisplayObject" preserve="all"/>
+		<type fullname="FairyGUI.Container" preserve="all"/>
+		<type fullname="FairyGUI.Stage" preserve="all"/>
+		<type fullname="FairyGUI.Controller" preserve="all"/>
+		<type fullname="FairyGUI.GObject" preserve="all"/>
+		<type fullname="FairyGUI.GGraph" preserve="all"/>
+		<type fullname="FairyGUI.GGroup" preserve="all"/>
+		<type fullname="FairyGUI.GImage" preserve="all"/>
+		<type fullname="FairyGUI.GLoader" preserve="all"/>
+		<type fullname="FairyGUI.GMovieClip" preserve="all"/>
+		<type fullname="FairyGUI.TextFormat" preserve="all"/>
+		<type fullname="FairyGUI.GTextField" preserve="all"/>
+		<type fullname="FairyGUI.GRichTextField" preserve="all"/>
+		<type fullname="FairyGUI.GTextInput" preserve="all"/>
+		<type fullname="FairyGUI.GComponent" preserve="all"/>
+		<type fullname="FairyGUI.GList" preserve="all"/>
+		<type fullname="FairyGUI.GRoot" preserve="all"/>
+		<type fullname="FairyGUI.GLabel" preserve="all"/>
+		<type fullname="FairyGUI.GButton" preserve="all"/>
+		<type fullname="FairyGUI.GComboBox" preserve="all"/>
+		<type fullname="FairyGUI.GProgressBar" preserve="all"/>
+		<type fullname="FairyGUI.GSlider" preserve="all"/>
+		<type fullname="FairyGUI.PopupMenu" preserve="all"/>
+		<type fullname="FairyGUI.ScrollPane" preserve="all"/>
+		<type fullname="FairyGUI.Transition" preserve="all"/>
+		<type fullname="FairyGUI.UIPackage" preserve="all"/>
+		<type fullname="FairyGUI.Window" preserve="all"/>
+		<type fullname="FairyGUI.GObjectPool" preserve="all"/>
+		<type fullname="FairyGUI.Relations" preserve="all"/>
+		<type fullname="FairyGUI.RelationType" preserve="all"/>
+		<type fullname="FairyGUI.Timers" preserve="all"/>
+		<type fullname="FairyGUI.GTween" preserve="all"/>
+		<type fullname="FairyGUI.GTweener" preserve="all"/>
+		<type fullname="FairyGUI.EaseType" preserve="all"/>
+		<type fullname="FairyGUI.TweenValue" preserve="all"/>
+		<type fullname="FairyGUI.GoWrapper" preserve="all"/>
+		<type fullname="Tutorial.BaseClass" preserve="all"/>
 		<type fullname="Tutorial.TestEnum" preserve="all"/>
 		<type fullname="Tutorial.DerivedClass" preserve="all"/>
 		<type fullname="Tutorial.ICalc" preserve="all"/>

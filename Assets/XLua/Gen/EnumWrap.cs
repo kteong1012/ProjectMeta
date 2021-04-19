@@ -16,6 +16,106 @@ namespace XLua.CSObjectWrap
 {
     using Utils = XLua.Utils;
     
+    public class FairyGUIRelationTypeWrap
+    {
+		public static void __Register(RealStatePtr L)
+        {
+		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+		    Utils.BeginObjectRegister(typeof(FairyGUI.RelationType), L, translator, 0, 0, 0, 0);
+			Utils.EndObjectRegister(typeof(FairyGUI.RelationType), L, translator, null, null, null, null, null);
+			
+			Utils.BeginClassRegister(typeof(FairyGUI.RelationType), L, null, 26, 0, 0);
+
+            Utils.RegisterEnumType(L, typeof(FairyGUI.RelationType));
+
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
+            
+            Utils.EndClassRegister(typeof(FairyGUI.RelationType), L, translator);
+        }
+		
+		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int __CastFrom(RealStatePtr L)
+		{
+			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
+            if (lua_type == LuaTypes.LUA_TNUMBER)
+            {
+                translator.PushFairyGUIRelationType(L, (FairyGUI.RelationType)LuaAPI.xlua_tointeger(L, 1));
+            }
+			
+            else if(lua_type == LuaTypes.LUA_TSTRING)
+            {
+
+                try
+				{
+                    translator.TranslateToEnumToTop(L, typeof(FairyGUI.RelationType), 1);
+				}
+				catch (System.Exception e)
+				{
+					return LuaAPI.luaL_error(L, "cast to " + typeof(FairyGUI.RelationType) + " exception:" + e);
+				}
+
+            }
+			
+            else
+            {
+                return LuaAPI.luaL_error(L, "invalid lua type for FairyGUI.RelationType! Expect number or string, got + " + lua_type);
+            }
+
+            return 1;
+		}
+	}
+    
+    public class FairyGUIEaseTypeWrap
+    {
+		public static void __Register(RealStatePtr L)
+        {
+		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+		    Utils.BeginObjectRegister(typeof(FairyGUI.EaseType), L, translator, 0, 0, 0, 0);
+			Utils.EndObjectRegister(typeof(FairyGUI.EaseType), L, translator, null, null, null, null, null);
+			
+			Utils.BeginClassRegister(typeof(FairyGUI.EaseType), L, null, 33, 0, 0);
+
+            Utils.RegisterEnumType(L, typeof(FairyGUI.EaseType));
+
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
+            
+            Utils.EndClassRegister(typeof(FairyGUI.EaseType), L, translator);
+        }
+		
+		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int __CastFrom(RealStatePtr L)
+		{
+			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
+            if (lua_type == LuaTypes.LUA_TNUMBER)
+            {
+                translator.PushFairyGUIEaseType(L, (FairyGUI.EaseType)LuaAPI.xlua_tointeger(L, 1));
+            }
+			
+            else if(lua_type == LuaTypes.LUA_TSTRING)
+            {
+
+                try
+				{
+                    translator.TranslateToEnumToTop(L, typeof(FairyGUI.EaseType), 1);
+				}
+				catch (System.Exception e)
+				{
+					return LuaAPI.luaL_error(L, "cast to " + typeof(FairyGUI.EaseType) + " exception:" + e);
+				}
+
+            }
+			
+            else
+            {
+                return LuaAPI.luaL_error(L, "invalid lua type for FairyGUI.EaseType! Expect number or string, got + " + lua_type);
+            }
+
+            return 1;
+		}
+	}
+    
     public class TutorialTestEnumWrap
     {
 		public static void __Register(RealStatePtr L)
