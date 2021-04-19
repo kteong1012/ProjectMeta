@@ -17,6 +17,5 @@ self._closeBtn.onClick:Add(function() self:_BtnSwitchOnClick()end)
 end
 
 function UITestPanel2:_BtnSwitchOnClick()
-    print("CLICK!!!")
-    self:DestorySelf()
+    FF.UIComponentMgr:ShowUI(UITestPanel)
 end

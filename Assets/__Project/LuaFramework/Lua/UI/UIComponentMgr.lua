@@ -40,6 +40,9 @@ function UIComponentMgr:Init()
     if self._isInited then
         return
     end
+    
+    self:_AddPackage()
+
     self._layerTable = {
         Background = 0,
         Panel = 100,
@@ -56,6 +59,10 @@ function UIComponentMgr:Init()
     end
 
     self._isInited = true
+end
+
+function  UIComponentMgr:_AddPackage()
+    UIPackage.AddPackage("Assets/__Project/FGUI/Test")
 end
 
 ---@generic T
