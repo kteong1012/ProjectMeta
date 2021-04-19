@@ -100,7 +100,7 @@ function UIComponentMgr:_GetUI(uiClass)
     local ui = self:_TryGetUI(uiClass)
     if ui == nil then
         ui = CCC(uiClass)
-        table.insert(self._runningUIs,ui)
+        self:_TryAddRunningUI(ui)
     end
 
     self:_HandleCommingUI(ui)
@@ -152,9 +152,32 @@ function UIComponentMgr:DestoryUI(ui)
         return
     end
     ui:Hide(true)
+    self:_TryRemoveRunningUI(ui)
     ui:OnDestroy()
     if ui._root ~= nil then
         GRoot.inst:RemoveChild(ui._root, true)
+    end
+end
+
+function  UIComponentMgr:_TryAddRunningUI(ui)
+    local contains = false
+    for _,v in pairs(self._runningUIs) do
+        if v == ui then
+            contains = true
+            break
+        end
+    end
+    if not contains then
+        table.insert(self._runningUIs,ui)
+    end
+end
+
+function  UIComponentMgr:_TryRemoveRunningUI(ui)
+    for k,v in pairs(self._runningUIs) do
+        if v == ui then
+            self._runningUIs[k] = nil
+            break
+        end
     end
 end
 

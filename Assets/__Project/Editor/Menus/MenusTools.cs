@@ -6,9 +6,4 @@ using UnityEngine;
 
 public class MenusTools : Editor
 {
-    [MenuItem("FGUI/‘ÿ»ÎPackages")]
-    public static void LoadPackages()
-    {
-        UIPackage.AddPackage("Assets/__Project/FGUI/Test");
-    }
 }
