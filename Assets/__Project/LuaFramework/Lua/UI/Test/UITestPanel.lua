@@ -1,22 +1,24 @@
 ﻿---@class UITestPanel : UIPanelBase
----@field _closeBtn CS.FairyGUI.GButton
+---@field _closeBtn GButton
+---@field _testBtn GButton
 
-UITestPanel = DefineExtendClass(UITestPanel,UIPanelBase)
+UITestPanel = DefineExtendClass(UITestPanel, UIPanelBase)
 
 function UITestPanel:GetNameAndPackage()
-    return "UIPanel1","GeneralPackage"
-end
-
----@return boolean
-function UITestPanel:CanRepeat()
-    return false
+    return "UIPanel1", "GeneralPackage"
 end
 
 function UITestPanel:OnCreate()
     self._closeBtn = self._root:GetChild("btn_switch")
-self._closeBtn.onClick:Add(function() self:_BtnSwitchOnClick()end)
+    self._testBtn = self._root:GetChild("btn_test")
+    self:AddClick(self._closeBtn,self._BtnSwitchOnClick)
+    self:AddClick(self._testBtn,self._BtnTestOnClick)
 end
 
 function UITestPanel:_BtnSwitchOnClick()
     FF.UIComponentMgr:ShowUI(UITestPanel2)
+end
+
+function UITestPanel:_BtnTestOnClick()
+    FF.UIComponentMgr:ShowUI(UITestPopup)
 end

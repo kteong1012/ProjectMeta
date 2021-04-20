@@ -120,6 +120,11 @@ namespace FairyGUIEditor
                 string icon = EditorGUILayout.TextField("Icon", gObj.icon);
                 if (EditorGUI.EndChangeCheck())
                     gObj.icon = icon;
+
+                EditorGUI.BeginChangeCheck();
+                int sortingOrder = EditorGUILayout.IntField("Sorting Order", gObj.sortingOrder);
+                if (EditorGUI.EndChangeCheck())
+                    gObj.sortingOrder = sortingOrder;
             }
         }
     }

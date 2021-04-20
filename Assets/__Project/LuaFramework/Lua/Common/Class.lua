@@ -3,10 +3,16 @@
 ---@field __c_isClass boolean
 ---@field __c_tag string
 
+ClassTagDefine = {
+    UI = "UI"
+}
+
 ---面向对象---
 local _classIdKey = "__c_id"
 local _isClassKey = "__c_isClass"
 local _ClassTagKey = "__c_tag"
+
+local _definedClasses = {}
 
 --用来调用单例的东西，就当它是语法糖就行了,叫这个名字主要因为顺手
 FF = {}
@@ -20,15 +26,16 @@ function DefineClass(class, tag)
         class[_ClassTagKey] = tag
     end
     class[_classIdKey] = _classId
+    _definedClasses[_classId] = class
     _classId = _classId + 1
     return class
 end
 
-function DefineExtendClass(class, superClass)
+function DefineExtendClass(class, superClass, tag)
     if superClass == nil then
         print("superClass不能为空,可能是require声明的顺序问题")
     else
-        class = DefineClass(class)
+        class = DefineClass(class, tag)
         setmetatable(class, superClass)
         return class
     end
@@ -77,10 +84,13 @@ function IsClass(instance)
 end
 
 function GetClassTag(class)
-    ---可继承的 所以不用rawget
     return class[_ClassTagKey]
 end
 
 function GetClassId(class)
-    return rawget(class, _classIdKey)
+    return class[_classIdKey]
+end
+
+function GetClassById(id)
+    return _definedClasses[id]
 end

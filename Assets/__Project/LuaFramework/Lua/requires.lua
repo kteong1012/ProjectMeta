@@ -15,6 +15,7 @@ require "Common/TestLua"
 
 --Common/Collection
 require "Common/Collection/Queue"
+require "Common/Collection/Stack"
 
 --UI
 require "UI/UIComponentMgr"
@@ -25,3 +26,4 @@ require "UI/Major/UIBackground"
 --UI/Test
 require "UI/Test/UITestPanel"
 require "UI/Test/UITest2Panel"
+require "UI/Test/UITestPopup"

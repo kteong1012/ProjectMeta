@@ -13,3 +13,6 @@ end
 function UIPopupBase:GetTypeName()
     return UIComponentType.Popup
 end
+function UIPopupBase:CanRepeat()
+    return true
+end
