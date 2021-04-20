@@ -1,5 +1,5 @@
 ﻿---@class UIComponentBase : LuaClass
----@field _root GComponent
+---@field _root CS.FairyGUI.GComponent
 ---@field _childrenComponents GComponent[]
 
 UIComponentBase = DefineClass(UIComponentBase, ClassTagDefine.UI)
