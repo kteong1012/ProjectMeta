@@ -86,7 +86,7 @@ end
 
 --不要重写
 function UIComponentBase:DestroySelf()
-    FF.UIComponentMgr:Destory(self)
+    FF.UIComponentMgr:Destroy(self)
 end
 
 --不要重写

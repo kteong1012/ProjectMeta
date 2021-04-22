@@ -21,8 +21,9 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(UIPackageManager);
-			Utils.BeginObjectRegister(type, L, translator, 0, 2, 0, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 3, 0, 0);
 			
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadPackages", _m_LoadPackages);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetPackage", _m_GetPackage);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CreateUIComponent", _m_CreateUIComponent);
 			
@@ -72,6 +73,33 @@ namespace XLua.CSObjectWrap
         
         
         
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_LoadPackages(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                UIPackageManager gen_to_be_invoked = (UIPackageManager)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                    gen_to_be_invoked.LoadPackages(  );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_GetPackage(RealStatePtr L)

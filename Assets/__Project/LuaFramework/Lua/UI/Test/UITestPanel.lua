@@ -20,5 +20,5 @@ function UITestPanel:_BtnSwitchOnClick()
 end
 
 function UITestPanel:_BtnTestOnClick()
-    FF.UIComponentMgr:ShowUI(UITestPopup)
+    FF.UIComponentMgr:ShowUI(UIMailListPanel)
 end

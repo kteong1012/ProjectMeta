@@ -73,6 +73,7 @@ end
 
 function UIComponentMgr:_AddPackage()
     UIPackage.AddPackage("Assets/__Project/FGUI/Test")
+    UIPackage.AddPackage("Assets/__Project/FGUI/Package1")
 end
 
 ---@generic T
@@ -157,7 +158,7 @@ function UIComponentMgr:_HandleCommingUI(ui)
     end
 end
 ---@param ui UIComponentBase
-function UIComponentMgr:Destory(ui)
+function UIComponentMgr:Destroy(ui)
     if ui == nil then
         return
     end

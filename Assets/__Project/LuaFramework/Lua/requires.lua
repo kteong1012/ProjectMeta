@@ -23,6 +23,9 @@ require "UI/UIComponentMgr"
 --UI/Major
 require "UI/Major/UIBackground"
 
+--UI/System/Mail
+require "UI/System/Mail/UIMailListPanel"
+
 --UI/Test
 require "UI/Test/UITestPanel"
 require "UI/Test/UITest2Panel"
